@@ -1,0 +1,33 @@
+﻿/* Style for the modal */
+.modal-dialog {
+    margin: auto;
+}
+
+/* Style for the modal content */
+.modal-content {
+    background-color: rgba(255, 255, 255, 0.9); /* Background with transparency */
+    border-radius: 10px;
+}
+
+/* Style for the modal header */
+.modal-header {
+    border-bottom:groove; /* Remove border from header */
+    text-align: center;
+}
+
+/* Style for the modal body */
+.modal-body {
+    text-align: center;
+}
+
+/* Style for the modal title */
+.modal-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Style for the select menu */
+select.form-control {
+    width: 80%; /* Adjust width as needed */
+    margin: 10px auto; /* Add margin to center the menu vertically */
+}

@@ -1,0 +1,80 @@
+﻿@model List<TodoItem>
+@Html.Partial("AddTask")
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+</head>
+
+<div class="welcome-message">
+    <h1>Welcome My Famalam</h1>
+</div>
+
+<h1>To-Do List</h1>
+<div class="header">
+    <div class="button-container">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTodoModal">
+            Add New To-Do Item
+        </button>
+        <button type="button" class="btn btn-completed" onclick="window.location.href='@Url.Action("CompleteTask", "ToDo")'">
+            Completed
+        </button>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mark</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Estimated Time</th>
+            <th>Time Spent</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderByDescending(t => t.priority))
+        {
+            var isStartedKey = "isStarted_" + item.id;
+            var isStarted = TempData.ContainsKey(isStartedKey) && (bool)TempData[isStartedKey];
+            <tr class="@((item.priority == Priority.High) ? "task-right" : "task-left")">
+                <td>
+                    <form asp-action="MarkComplete" method="post" class="mark-complete-form">
+                        <input type="hidden" name="id" value="@item.id" />
+                        <input type="checkbox" name="isCompleted" onchange="this.form.submit()" @(item.isClosed ? "checked" : "") />
+                    </form>
+                </td>
+                <td>@item.title</td>
+                <td>@item.description</td>
+                <td>
+                    <form asp-action="UpdatePriority" method="post">
+                        <input type="hidden" name="id" value="@item.id" />
+                        <select class="priority" name="priority" onchange="this.form.submit()">
+                            <option value="Low" selected="@(item.priority == Priority.Low)">Low</option>
+                            <option value="Medium" selected="@(item.priority == Priority.Medium)">Medium</option>
+                            <option value="High" selected="@(item.priority == Priority.High)">High</option>
+                        </select>
+                    </form>
+                </td>
+
+                <td>@item.DisplayETimeSpent</td>
+                <td>@item.DisplayTimeSpent</td>
+                <td>@(isStarted ? "Started" : "Not Started")</td>
+                <td>
+
+                    <div class="btn-group">
+                        <a asp-action="StartTask" asp-route-id="@item.id" class="btn @(isStarted ? "active" : "inactive")">Start</a>
+                        <a asp-action="StopTask" asp-route-id="@item.id" class="btn @(isStarted ? "inactive" : "active")">Stop</a>
+                        <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-delete">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

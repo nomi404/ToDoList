@@ -1,0 +1,203 @@
+﻿/* General styles */
+.table th {
+    text-align: center;
+}
+
+body {
+    background-color: #F8F9FA;
+}
+
+.table tr {
+    text-align: center;
+    background-color: #F8F9FA; /* Set background color for table rows */
+}
+
+.table td {
+    font-size: 16px; /* Set font size for table headers and cells */
+    vertical-align: middle; /* Align text vertically to the middle */
+    color: #333333;
+}
+
+/* Add the following style for the buttons container to align vertically */
+.btn-group {
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Align items vertically */
+    justify-content: center; /* Center the buttons horizontally */
+    gap: 5px; /* Adjust gap between buttons */
+}
+
+/* Button styles */
+.btn-group {
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px; /* Set font size for buttons */
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.inactive {
+    /* Styles for the active button (e.g., background color, border) */
+    background-color: lightgreen;
+    border: 1px solid green;
+}
+
+.active {
+    /* Styles for the inactive button (e.g., opacity, cursor) */
+    opacity: 0.5;
+    cursor: default;
+}
+
+.btn-delete {
+    background-color: lightcoral;
+    color: white;
+    border: 1px solid black; /* Adjust border color */
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.priority {
+    /* Base styles for the dropdown menu */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    background-color: lightgreen; /* Adjust as needed */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 150px; /* Adjust width as needed */
+    font-size: 16px; /* Set font size for dropdown */
+}
+
+    /* Style for individual options */
+    .priority option {
+        padding: 8px;
+    }
+
+        /* Hover effect for options */
+        .priority option:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Selected option style */
+        .priority option[selected] {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+    /* Dropdown arrow icon */
+    .priority:after {
+        content: "\25BC"; /* Unicode for down arrow */
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+
+    /* Priority-specific background colors */
+    .priority option[value="Low"] {
+        background-color: green;
+    }
+
+    .priority option[value="Medium"] {
+        background-color: yellow;
+    }
+
+    .priority option[value="High"] {
+        background-color: red;
+    }
+
+/* Animation styles */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.task-left {
+    animation: slideInLeft 0.5s ease-out;
+}
+
+.task-right {
+    animation: slideInRight 0.5s ease-out;
+}
+
+/* Style for mark complete checkbox */
+.mark-complete-form {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+    .mark-complete-form input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+
+/* Welcome message animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.welcome-message {
+    animation: fadeIn 1s ease-out;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background-color: deepskyblue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+    .btn-primary:hover {
+        background-color: darkblue;
+    }
+
+.btn-completed {
+    background-color: forestgreen;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+    .btn-completed:hover {
+        background-color: darkgreen;
+    }

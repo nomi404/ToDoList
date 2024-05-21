@@ -1,0 +1,29 @@
+﻿@model List<TodoItem>
+
+<h1>Completed Tasks</h1>
+ <button type="button" class="btn-primary" onclick="window.location.href='@Url.Action("Index", "ToDo")'">
+            ToDo
+        </button>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Log Time</th>
+            <th>Close Time</th>
+            <!-- Add other columns as needed -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.title</td>
+                <td>@item.description</td>
+                <td>@item.logTime</td>
+                <td>@item.closeTime</td>
+                <!-- Add other columns as needed -->
+            </tr>
+        }
+    </tbody>
+</table>
